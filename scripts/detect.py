@@ -8,15 +8,15 @@ import cv2
 from tflite_runtime.interpreter import Interpreter
 import numpy as np
 #ROS
-from vision.msg import labels_msg
+from capra_hazmat_detection.msg import labels_msg
 import rospkg
-import rospy    
+import rospy
 from sensor_msgs.msg import Image
 import ros_numpy
 
 
-LABELS_PATH = os.path.join(rospkg.RosPack().get_path('vision'), 'include', 'labels.txt')
-TFLITE_PATH = os.path.join(rospkg.RosPack().get_path('vision'), 'include', 'detect.tflite')
+LABELS_PATH = os.path.join(rospkg.RosPack().get_path('capra_hazmat_detection'), 'include', 'labels.txt')
+TFLITE_PATH = os.path.join(rospkg.RosPack().get_path('capra_hazmat_detection'), 'include', 'detect.tflite')
 
 CAMERA_WIDTH = 640
 CAMERA_HEIGHT = 480

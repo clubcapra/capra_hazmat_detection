@@ -1,12 +1,12 @@
 cmake_minimum_required(VERSION 3.0.2)
-project(vision)
+project(capra_hazmat_detection)
 
 
 find_package(catkin REQUIRED COMPONENTS
   cv_bridge
   rospy
   sensor_msgs
-  std_msgs 
+  std_msgs
   message_generation
 )
 
@@ -25,7 +25,6 @@ generate_messages(
     INCLUDE_DIRS include
     LIBRARIES vision
     CATKIN_DEPENDS cv_bridge rospy sensor_msgs message_runtime std_msgs
-    DEPENDS system_lib
   )
   include_directories(
 # include

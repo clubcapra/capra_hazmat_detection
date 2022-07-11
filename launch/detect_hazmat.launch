@@ -1,5 +1,5 @@
 <launch>
 
-<node name="camera" pkg="vision" type="detect.py" output="screen" respawn="true" />
+    <node name="hazmat" pkg="capra_hazmat_detection" type="detect.py" ns="/capra" output="screen" respawn="true" />
 
 </launch>
