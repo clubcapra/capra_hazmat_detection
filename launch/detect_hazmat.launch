@@ -1,0 +1,5 @@
+<launch>
+
+<node name="camera" pkg="vision" type="detect.py" output="screen" respawn="true" />
+
+</launch>
