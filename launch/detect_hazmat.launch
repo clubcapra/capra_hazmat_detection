@@ -1,5 +1,9 @@
 <launch>
+    
+    <arg name="robot_namespace" default="/capra/hazmat_detection" />
 
-    <node name="hazmat" pkg="capra_hazmat_detection" type="detect.py" ns="/capra" output="screen" respawn="true" />
+    <node name="hazmat" pkg="capra_hazmat_detection" type="detect.py" ns="$(arg robot_namespace)" output="screen" respawn="true" />
+        <param name="camera" type="string" value="/dev/video0" />
+        <param name="robot_namespace" type="string" value="$(arg robot_namespace)" />
 
 </launch>

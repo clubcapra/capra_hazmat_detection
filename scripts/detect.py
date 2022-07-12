@@ -77,13 +77,16 @@ def detect_objects(interpreter, image, threshold):
 
 def main():
     #ROS SETUP
+    robot_namespace_string = rospy.get_param("/robot_namespace")
 
-    pub_img = rospy.Publisher('/camera', Image, queue_size= 1)
-    pub_label = rospy.Publisher('/labels', labels_msg, queue_size= 1)
+    pub_img = rospy.Publisher(robot_namespace_string + '/detection_view', Image, queue_size= 1)
+    pub_label = rospy.Publisher(robot_namespace_string + '/labels', labels_msg, queue_size= 1)
     rospy.init_node('image', anonymous=False)
     rate = rospy.Rate(10)
     msg_img = Image()
     msg_label = labels_msg()
+    cam_location = rospy.get_param("/camera")
+    rospy.loginfo(cam_location)
 
     #OPENCV SETUP
     labels = load_labels()
@@ -91,7 +94,7 @@ def main():
     interpreter.allocate_tensors()
     _, input_height, input_width, _ = interpreter.get_input_details()[0]['shape']
     #print(f"\n Height:{input_height}, Width:{input_width} \n")
-    cap = cv2.VideoCapture(CAMERA_ID)
+    cap = cv2.VideoCapture(cam_location)
     cap.set(cv2.CAP_PROP_FRAME_WIDTH, CAMERA_WIDTH)
     cap.set(cv2.CAP_PROP_FRAME_HEIGHT, CAMERA_HEIGHT)
 
