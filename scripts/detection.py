@@ -81,7 +81,7 @@ def updateframe_callback(image_msgs):
 def main():
     #ROS SETUP
     rospy.Subscriber("/markhor/camera_01/usb_cam/image_raw",Image, updateframe_callback,queue_size=1)
-    pub_img = rospy.Publisher('/camera', Image, queue_size= 1)
+    pub_img = rospy.Publisher('/capra_hazmat_detection', Image, queue_size= 1)
     pub_label = rospy.Publisher('/labels', labels_msg, queue_size= 1)
     rospy.init_node('image', anonymous=False)
     rate = rospy.Rate(10)
